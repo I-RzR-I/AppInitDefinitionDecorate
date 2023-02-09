@@ -1,5 +1,8 @@
 > **Note** This repository is developed for .netstandard2.0+
 
+[![NuGet Version](https://img.shields.io/nuget/v/AppInitDefinitionDecorate.svg?style=flat&logo=nuget)](https://www.nuget.org/packages/AppInitDefinitionDecorate/)
+[![Nuget Downloads](https://img.shields.io/nuget/dt/AppInitDefinitionDecorate.svg?style=flat&logo=nuget)](https://www.nuget.org/packages/AppInitDefinitionDecorate/)
+
 The current repository allows you to maintain your start-up project class cleanly, and organize solution structure more clearly, simply readable, and reusable. As was said previously you can use the current repository if your project was written in netstandard 2.0+. 
 
 Using this functionality allows you to safely add new dependence, adjust existing or remove/relocate it without pain and with a few adjustments.
@@ -12,8 +15,6 @@ No additional components or packs are required for use. So, it only needs to be 
 
 
 > `Install-Package AppInitDefinitionDecorate -Version x.x.x.x`
-
-[![NuGet Version](https://img.shields.io/nuget/v/AppInitDefinitionDecorate.svg?style=flat)](https://www.nuget.org/packages/AppInitDefinitionDecorate/)
 
 ## Content
 1. [USING](docs/usage.md)
