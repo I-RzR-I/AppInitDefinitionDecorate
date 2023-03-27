@@ -28,7 +28,7 @@ using System.Resources;
 #endif
 
 [assembly: AssemblyCompany("RzR ®")]
-[assembly: AssemblyProduct("")]
+[assembly: AssemblyProduct("Application initialize definition decorate")]
 [assembly: AssemblyCopyright("Copyright © 2023 RzR All rights reserved.")]
 [assembly: AssemblyTrademark("® RzR™")]
 [assembly: AssemblyDescription("The current repository allows you to maintain your start-up project class cleanly, and organize solution structure more clearly, simply readable, and reusable. And with the possibility to order initialize and use it or not. Using this functionality allows you to safely add new dependence, adjust existing or remove/relocate it without pain and with a few adjustments.")]
@@ -45,6 +45,6 @@ using System.Resources;
 [assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.MainAssembly)]
 #endif
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: AssemblyInformationalVersion("1.0.0.x")]
+[assembly: AssemblyVersion("1.0.1.1707")]
+[assembly: AssemblyFileVersion("1.0.1.1707")]
+[assembly: AssemblyInformationalVersion("1.0.1.x")]

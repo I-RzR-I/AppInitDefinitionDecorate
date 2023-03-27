@@ -42,7 +42,7 @@ namespace AppInitDefinitionDecorate
         }
 
         /// <inheritdoc />
-        public void ServiceConfiguration(IServiceCollection services, IConfiguration configuration)
+        public virtual void ServiceConfiguration(IServiceCollection services, IConfiguration configuration)
         {
         }
 
@@ -52,7 +52,7 @@ namespace AppInitDefinitionDecorate
         }
 
         /// <inheritdoc />
-        public void ServiceConfiguration(IServiceCollection services, IApplicationBuilder builder,
+        public virtual void ServiceConfiguration(IServiceCollection services, IApplicationBuilder builder,
             IConfiguration configuration)
         {
         }
