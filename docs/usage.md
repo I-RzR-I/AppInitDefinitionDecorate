@@ -27,6 +27,7 @@ In dependence on how many parameters you have in your class, you can choose from
 * `UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env)`;
 * `UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env, IHostApplicationLifetime applicationLifetime)`;
 * `UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env, IHostApplicationLifetime applicationLifetime, IServiceProvider serviceProvider)`.
+ * `UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env, IServiceProvider serviceProvider)`.
 
 <hr/>
 

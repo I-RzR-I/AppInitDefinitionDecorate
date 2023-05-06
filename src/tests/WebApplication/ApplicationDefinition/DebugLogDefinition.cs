@@ -17,7 +17,7 @@
 #region U S A G E S
 
 using System;
-using AppInitDefinitionDecorate;
+using AppInitDefinitionDecorate.AppAndServiceImplements;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
