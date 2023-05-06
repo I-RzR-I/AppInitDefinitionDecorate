@@ -16,7 +16,7 @@
 
 #region U S A G E S
 
-using AppInitDefinitionDecorate;
+using AppInitDefinitionDecorate.AppAndServiceImplements;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

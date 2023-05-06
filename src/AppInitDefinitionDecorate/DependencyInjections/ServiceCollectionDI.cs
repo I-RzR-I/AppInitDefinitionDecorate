@@ -31,8 +31,7 @@ namespace AppInitDefinitionDecorate.DependencyInjections
     /// <summary>
     ///     Service collection dependency injection
     /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public static class ServiceCollectionDI
+    public static partial class AppDefinitionDependencyInjection
     {
         /// <summary>
         ///     Add application definition decorates
@@ -40,13 +39,11 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="serviceCollection">Service collection</param>
         /// <param name="entryPoints">Assembly entry point</param>
         /// <remarks></remarks>
-        public static void AddDefinitionDecorates(this IServiceCollection serviceCollection, params Type[] entryPoints)
+        public static void AddDefinitionDecorates(this IServiceCollection serviceCollection, params Type [] entryPoints)
         {
             var data = GetApplicationDefinitionDecorates(entryPoints);
             foreach (var item in data)
-            {
                 item.ServiceConfiguration(serviceCollection);
-            }
             serviceCollection.AddSingleton(data);
         }
 
@@ -57,15 +54,14 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="configuration">Application configuration</param>
         /// <param name="entryPoints">Assembly entry point</param>
         /// <remarks></remarks>
-        public static void AddDefinitionDecorates(this IServiceCollection serviceCollection,
+        public static void AddDefinitionDecorates(
+            this IServiceCollection serviceCollection,
             IConfiguration configuration,
-            params Type[] entryPoints)
+            params Type [] entryPoints)
         {
             var data = GetApplicationDefinitionDecorates(entryPoints);
             foreach (var item in data)
-            {
                 item.ServiceConfiguration(serviceCollection, configuration);
-            }
 
             serviceCollection.AddSingleton(data);
         }
@@ -77,15 +73,14 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="builder">Application builder</param>
         /// <param name="entryPoints">Assembly entry point</param>
         /// <remarks></remarks>
-        public static void AddDefinitionDecorates(this IServiceCollection serviceCollection,
+        public static void AddDefinitionDecorates(
+            this IServiceCollection serviceCollection,
             IApplicationBuilder builder,
-            params Type[] entryPoints)
+            params Type [] entryPoints)
         {
             var data = GetApplicationDefinitionDecorates(entryPoints);
             foreach (var item in data)
-            {
                 item.ServiceConfiguration(serviceCollection, builder);
-            }
 
             serviceCollection.AddSingleton(data);
         }
@@ -98,15 +93,14 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="configuration">Application configuration</param>
         /// <param name="entryPoints">Assembly entry point</param>
         /// <remarks></remarks>
-        public static void AddDefinitionDecorates(this IServiceCollection serviceCollection,
+        public static void AddDefinitionDecorates(
+            this IServiceCollection serviceCollection,
             IApplicationBuilder builder,
-            IConfiguration configuration, params Type[] entryPoints)
+            IConfiguration configuration, params Type [] entryPoints)
         {
             var data = GetApplicationDefinitionDecorates(entryPoints);
             foreach (var item in data)
-            {
                 item.ServiceConfiguration(serviceCollection, builder, configuration);
-            }
 
             serviceCollection.AddSingleton(data);
         }
@@ -117,7 +111,7 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="entryPoints">Entry assembly points</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        private static IReadOnlyCollection<IInitDefinitionDecorate> GetApplicationDefinitionDecorates(params Type[] entryPoints)
+        private static IReadOnlyCollection<IInitDefinitionDecorate> GetApplicationDefinitionDecorates(params Type [] entryPoints)
         {
             var result = new List<IInitDefinitionDecorate>();
             foreach (var entryPoint in entryPoints)

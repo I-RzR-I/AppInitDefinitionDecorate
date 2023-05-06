@@ -31,8 +31,7 @@ namespace AppInitDefinitionDecorate.DependencyInjections
     /// <summary>
     ///     Application builder dependency injection
     /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public static class ApplicationBuilderDI
+    public static partial class AppDefinitionDependencyInjection
     {
         /// <summary>
         ///     Use added definition decorates
@@ -42,9 +41,7 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         public static void UseDefinitionDecorates(this IApplicationBuilder applicationBuilder)
         {
             foreach (var item in GetApplicationDefinitionDecorates(applicationBuilder))
-            {
                 item.ApplicationConfiguration(applicationBuilder);
-            }
         }
 
         /// <summary>
@@ -56,9 +53,21 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         public static void UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env)
         {
             foreach (var item in GetApplicationDefinitionDecorates(applicationBuilder))
-            {
                 item.ApplicationConfiguration(applicationBuilder, env);
-            }
+        }
+
+        /// <summary>
+        ///     Use added definition decorates
+        /// </summary>
+        /// <param name="applicationBuilder">Application builder</param>
+        /// <param name="env">Host environment</param>
+        /// <param name="serviceProvider">Service provider</param>
+        /// <remarks></remarks>
+        public static void UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env,
+            IServiceProvider serviceProvider)
+        {
+            foreach (var item in GetApplicationDefinitionDecorates(applicationBuilder))
+                item.ApplicationConfiguration(applicationBuilder, env, serviceProvider);
         }
 
         /// <summary>
@@ -68,13 +77,12 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="env">Host environment</param>
         /// <param name="applicationLifetime">Host application lifetime</param>
         /// <remarks></remarks>
-        public static void UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env,
+        public static void UseDefinitionDecorates(
+            this IApplicationBuilder applicationBuilder, IHostEnvironment env,
             IHostApplicationLifetime applicationLifetime)
         {
             foreach (var item in GetApplicationDefinitionDecorates(applicationBuilder))
-            {
                 item.ApplicationConfiguration(applicationBuilder, env, applicationLifetime);
-            }
         }
 
         /// <summary>
@@ -85,13 +93,12 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <param name="applicationLifetime">Host application lifetime</param>
         /// <param name="serviceProvider">Service provider</param>
         /// <remarks></remarks>
-        public static void UseDefinitionDecorates(this IApplicationBuilder applicationBuilder, IHostEnvironment env,
+        public static void UseDefinitionDecorates(
+            this IApplicationBuilder applicationBuilder, IHostEnvironment env,
             IHostApplicationLifetime applicationLifetime, IServiceProvider serviceProvider)
         {
             foreach (var item in GetApplicationDefinitionDecorates(applicationBuilder))
-            {
                 item.ApplicationConfiguration(applicationBuilder, env, applicationLifetime, serviceProvider);
-            }
         }
 
         /// <summary>
@@ -102,13 +109,11 @@ namespace AppInitDefinitionDecorate.DependencyInjections
         /// <remarks></remarks>
         private static IReadOnlyCollection<IInitDefinitionDecorate> GetApplicationDefinitionDecorates(
             IApplicationBuilder applicationBuilder)
-        {
-            return applicationBuilder
-                .ApplicationServices
-                .GetRequiredService<IReadOnlyCollection<IInitDefinitionDecorate>>()
-                .Where(x => x.IsDecorationEnable)
-                .OrderBy(x => x.InitializeOrder)
-                .ToList();
-        }
+        => applicationBuilder
+            .ApplicationServices
+            .GetRequiredService<IReadOnlyCollection<IInitDefinitionDecorate>>()
+            .Where(x => x.IsDecorationEnable)
+            .OrderBy(x => x.InitializeOrder)
+            .ToList();
     }
 }
