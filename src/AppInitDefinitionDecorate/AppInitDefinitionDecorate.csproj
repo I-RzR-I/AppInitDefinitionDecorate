@@ -24,10 +24,6 @@
     <Language>en-US</Language>
     <RepositoryType>GIT</RepositoryType>
     <PackageIconUrl />
-
-    <SignAssembly>true</SignAssembly>
-    <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>AppInitDefinitionDecorateSign.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
