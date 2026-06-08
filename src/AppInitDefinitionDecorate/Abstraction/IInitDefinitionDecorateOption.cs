@@ -1,40 +1,29 @@
 ﻿// ***********************************************************************
-//  Assembly         : RzR.Shared.Application.AppInitDefinitionDecorate
-//  Author           : RzR
-//  Created On       : 2023-05-06 08:29
+//  Assembly          : RzR.Shared.Application.AppInitDefinitionDecorate
+//  Author            : RzR
+//  Created           : 07-06-2026 08:06
 // 
 //  Last Modified By : RzR
-//  Last Modified On : 2023-05-06 08:42
-// ***********************************************************************
-//  <copyright file="IInitDefinitionDecorateOption.cs" company="">
-//   Copyright (c) RzR. All rights reserved.
+//  Last Modified On : 07-06-2026 12:47
+//  ***********************************************************************
+//  <copyright file="IInitDefinitionDecorateOption.cs" company="RzR SOFT & TECH">
+//      Copyright (c) RzR. All rights reserved.
 //  </copyright>
-// 
-//  <summary>
-//  </summary>
-// ***********************************************************************
+//  <contact>
+//      https://iamrzr.dev/contact
+//  </contact>
+//  <summary></summary>
+//  ***********************************************************************
 
-namespace AppInitDefinitionDecorate.Abstraction
+namespace RzR.Infrastructure.BootstrapDefinition.Abstraction
 {
+    /// -------------------------------------------------------------------------------------------------
     /// <summary>
-    ///     Application initialization decorate
+    ///     Unified public contract for application bootstrap definitions. Combines metadata, service-
+    ///     configuration, and application-configuration capabilities.
     /// </summary>
-    internal partial interface IInitDefinitionDecorate
+    /// =================================================================================================
+    public interface IInitDefinitionDecorate : IDefinitionMetadata, IServiceDefinition, IApplicationDefinition
     {
-        /// <summary>
-        ///     Gets a value indicating whether this instance will be included in application.
-        /// </summary>
-        /// <value>
-        ///     <see langword="true" /> if this instance services will be added; otherwise, <see langword="false" />.
-        /// </value>
-        /// <remarks></remarks>
-        bool IsDecorationEnable { get; }
-
-        /// <summary>
-        ///     Gets initialization order if exist.
-        /// </summary>
-        /// <value></value>
-        /// <remarks></remarks>
-        int InitializeOrder { get; }
     }
 }

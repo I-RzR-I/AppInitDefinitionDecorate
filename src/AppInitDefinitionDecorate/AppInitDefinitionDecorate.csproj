@@ -1,16 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0;net9.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Authors>RzR</Authors>
     <Copyright>RzR</Copyright>
     <Owners>RzR</Owners>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>PackageIcon.png</PackageIcon>
-    <NoWarn>$(NoWarn);CS8032</NoWarn>
-    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageTags>App;StartUp;Initialize;Definition;Decorate;DI;Dependency;Injection;Application;Order;Priority</PackageTags>
     <RepositoryUrl>https://github.com/I-RzR-I/AppInitDefinitionDecorate</RepositoryUrl>
@@ -20,10 +19,11 @@
     <Summary>The current repository allows you to maintain your start-up project class cleanly, and organize solution structure more clearly, simply readable, and reusable. And with the possibility to order initialize and use it or not. Using this functionality allows you to safely add new dependence, adjust existing or remove/relocate it without pain and with a few adjustments.</Summary>
     <PackageTitle>RzR.Shared.Application (AppInitDefinitionDecorate)</PackageTitle>
     <Title>RzR.Shared.Application (AppInitDefinitionDecorate)</Title>
-    <LangVersion>9.0</LangVersion>
     <Language>en-US</Language>
     <RepositoryType>GIT</RepositoryType>
     <PackageIconUrl />
+    <RootNamespace>RzR.Infrastructure.BootstrapDefinition</RootNamespace>
+    <AssemblyName>RzR.Infrastructure.BootstrapDefinition</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -49,10 +49,19 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+  <!-- netstandard targets: use standalone abstraction packages -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.32" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.32" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.32" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
+  </ItemGroup>
+
+  <!-- Modern .NET targets (net6.0/net8.0/net9.0+): use the shared framework instead of standalone packages -->
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == '.NETCoreApp'">
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ProjectExtensions>
@@ -61,7 +70,7 @@
     </VisualStudio>
   </ProjectExtensions>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="PowerShell -NoProfile -ExecutionPolicy unrestricted -file $(SolutionDir)../build/pack.ps1 $(ConfigurationName)" />
-  </Target>
+  <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="PowerShell -NoProfile -ExecutionPolicy Bypass -file $(SolutionDir)../build/pack.ps1 $(ConfigurationName)" />
+  </Target>-->
 </Project>

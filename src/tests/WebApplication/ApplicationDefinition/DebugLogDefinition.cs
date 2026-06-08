@@ -17,9 +17,9 @@
 #region U S A G E S
 
 using System;
-using AppInitDefinitionDecorate.AppAndServiceImplements;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RzR.Infrastructure.BootstrapDefinition.AppAndServiceImplements;
 
 #endregion
 

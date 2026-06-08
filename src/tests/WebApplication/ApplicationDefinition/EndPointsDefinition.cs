@@ -16,9 +16,9 @@
 
 #region U S A G E S
 
-using AppInitDefinitionDecorate.AppAndServiceImplements;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
+using RzR.Infrastructure.BootstrapDefinition.AppAndServiceImplements;
 
 #endregion
 
