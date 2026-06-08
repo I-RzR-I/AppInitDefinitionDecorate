@@ -29,7 +29,7 @@ using System.Resources;
 
 [assembly: AssemblyCompany("RzR ®")]
 [assembly: AssemblyProduct("Application initialize definition decorate")]
-[assembly: AssemblyCopyright("Copyright © 2023 RzR All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2023-2026 RzR All rights reserved.")]
 [assembly: AssemblyTrademark("® RzR™")]
 [assembly:
     AssemblyDescription(
@@ -47,6 +47,6 @@ using System.Resources;
 [assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.MainAssembly)]
 #endif
 
-[assembly: AssemblyVersion("1.1.3.0753")]
-[assembly: AssemblyFileVersion("1.1.3.0753")]
-[assembly: AssemblyInformationalVersion("1.1.3.x")]
+[assembly: AssemblyVersion("2.0.0.7683")]
+[assembly: AssemblyFileVersion("2.0.0.7683")]
+[assembly: AssemblyInformationalVersion("2.0.0.7683")]
